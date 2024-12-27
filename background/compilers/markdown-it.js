@@ -21,6 +21,7 @@ md.compilers['markdown-it'] = (() => {
     sub: false,
     sup: false,
     tasklists: false,
+    multimdTable: false,
   }
 
   var description = {
@@ -40,6 +41,7 @@ md.compilers['markdown-it'] = (() => {
     sub: 'Subscript <sub>\n~text~',
     sup: 'Superscript <sup>\n^text^',
     tasklists: 'Task lists\n- [x]\n- [ ]',
+    multimdTable: 'Enable MultiMarkdown table',
   }
 
   var ctor = ({storage: {state}}) => ({
@@ -60,6 +62,13 @@ md.compilers['markdown-it'] = (() => {
         .use(state['markdown-it'].sub ? mdit.sub : () => {})
         .use(state['markdown-it'].sup ? mdit.sup : () => {})
         .use(state['markdown-it'].tasklists ? mdit.tasklists : () => {})
+        .use(state['markdown-it'].multimdTable ? mdit.multimdTable : () => {}, {
+          multiline: true,
+          rowspan: true,
+          headerless: true,
+          multibody: true,
+          autolabel: true,
+        })
         .render(markdown)
   })
 
