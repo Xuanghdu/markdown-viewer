@@ -22,6 +22,7 @@ md.compilers['markdown-it'] = (() => {
     sup: false,
     tasklists: false,
     multimdTable: false,
+    linkAttributes: false,
   }
 
   var description = {
@@ -42,6 +43,7 @@ md.compilers['markdown-it'] = (() => {
     sup: 'Superscript <sup>\n^text^',
     tasklists: 'Task lists\n- [x]\n- [ ]',
     multimdTable: 'Enable MultiMarkdown table',
+    linkAttributes: 'Add attributes to links\n[link](url){target="_blank"}',
   }
 
   var ctor = ({storage: {state}}) => ({
@@ -69,6 +71,7 @@ md.compilers['markdown-it'] = (() => {
           multibody: true,
           autolabel: true,
         })
+        .use(state['markdown-it'].attrs ? mdit.attrs : () => {})
         .render(markdown)
   })
 

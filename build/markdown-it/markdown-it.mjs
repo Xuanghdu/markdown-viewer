@@ -9,6 +9,7 @@ import footnote from 'markdown-it-footnote'
 import ins from 'markdown-it-ins'
 import mark from 'markdown-it-mark'
 import multimdTable from 'markdown-it-multimd-table'
+import linkAttributes from 'markdown-it-link-attributes'
 import sub from 'markdown-it-sub'
 import sup from 'markdown-it-sup'
 import tasklists from 'markdown-it-task-lists'
@@ -25,6 +26,7 @@ export {
   ins,
   mark,
   multimdTable,
+  linkAttributes,
   sub,
   sup,
   tasklists,
