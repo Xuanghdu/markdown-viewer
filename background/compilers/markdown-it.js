@@ -22,6 +22,7 @@ md.compilers['markdown-it'] = (() => {
     sup: false,
     tasklists: false,
     multimdTable: false,
+    ruby: false,
   }
 
   var description = {
@@ -42,6 +43,7 @@ md.compilers['markdown-it'] = (() => {
     sup: 'Superscript <sup>\n^text^',
     tasklists: 'Task lists\n- [x]\n- [ ]',
     multimdTable: 'Enable MultiMarkdown table',
+    ruby: 'Ruby annotation',
   }
 
   var ctor = ({storage: {state}}) => ({
@@ -52,6 +54,7 @@ md.compilers['markdown-it'] = (() => {
         .use(mdit.anchor, {
           slugify: (s) => new mdit.slugger().slug(s)
         })
+        .use(state['markdown-it'].ruby ? mdit.ruby : () => {})
         .use(state['markdown-it'].abbr ? mdit.abbr : () => {})
         .use(state['markdown-it'].attrs ? mdit.attrs : () => {})
         .use(state['markdown-it'].cjk ? mdit.cjk : () => {})

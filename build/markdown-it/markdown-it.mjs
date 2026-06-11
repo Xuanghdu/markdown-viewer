@@ -13,6 +13,7 @@ import sub from 'markdown-it-sub'
 import sup from 'markdown-it-sup'
 import tasklists from 'markdown-it-task-lists'
 import slugger from 'github-slugger'
+import { ruby } from '@mdit/plugin-ruby';
 
 export {
   mdit,
@@ -29,4 +30,5 @@ export {
   sup,
   tasklists,
   slugger,
+  ruby,
 }
